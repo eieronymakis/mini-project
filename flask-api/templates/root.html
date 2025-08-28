@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cytech Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/root.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body class="bg-secondary">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand ms-5 d-flex flex-row align-items-center" href="#">
+            <div class="overflow-hidden" style="border-radius: 50%;">
+                <img height="70px" width="70px" src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo">
+            </div>
+            <span class="ms-3 fs-4 fw-bold">Mini Project </span>
+        </a>
+    </nav>
+
+    <div class="user-select-none pagination-container w-100 d-flex align-items-center justify-content-center my-4">
+        <div class="pagination-box border border-2 border-light rounded p-2">
+            <button class="button-90 rounded me-3 border border-secondary" id="prev-btn">Previous</button>
+            <span id="page-info" class="text-light fw-bold"></span>
+            <button class="button-90 rounded ms-3 border border-secondary" id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <div class="w-75 ms-auto me-auto d-flex flex-row mb-3 gap-2 user-select-none">
+        <div class="search-bar me-auto">
+            <form action="" class="search-form ">
+                <input id="search-input" placeholder="Search products by name..." type="search" autofocus required>
+                <i class="fa fa-search"></i>
+            </form>  
+        </div>
+        <div class="ms-auto">
+            <button onclick="sortBy('id')" class="button-30">Sort by ID</button>
+            <button onclick="sortBy('name')" class="button-30">Sort by Name</button>
+        </div>
+    </div>
+
+
+    <div class="table-container w-75 ms-auto me-auto">
+        <table class="table table-hover table-dark table-striped-columns" id="products-table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Serial Number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody id="products-tbody">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/products.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

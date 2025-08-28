@@ -1,0 +1,12 @@
+ ____                _            _         _____     _     _      
+|  _ \ _ __ ___   __| |_   _  ___| |_ ___  |_   _|_ _| |__ | | ___ 
+| |_) | '__/ _ \ / _` | | | |/ __| __/ __|   | |/ _` | '_ \| |/ _ \
+|  __/| | | (_) | (_| | |_| | (__| |_\__ \   | | (_| | |_) | |  __/
+|_|   |_|  \___/ \__,_|\__,_|\___|\__|___/   |_|\__,_|_.__/|_|\___|
+
+create table `products` (
+  `id` int unsigned not null auto_increment primary key,
+  `serialNumber` varchar(255) not null,
+  `name` varchar(255) not null,
+  `description` TEXT null
+)

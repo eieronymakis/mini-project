@@ -1,0 +1,54 @@
+services:
+  api:
+    build: ./flask-api
+    container_name: flask
+    ports:
+      - 5000:5000
+    volumes:
+      - ./flask-api:/app
+    environment:
+      - FLASK_ENV=development
+    networks:
+      net0:
+        ipv4_address: 172.20.0.5
+
+  database:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=xyz12345
+      - MYSQL_DATABASE=cytech-db
+    volumes:
+      - /var/lib/mysql
+      - ./database-init:/docker-entrypoint-initdb.d
+    networks:
+      net0:
+        ipv4_address: 172.20.0.6
+
+  database-ui:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: xyz12345
+    depends_on:
+      - database
+    networks:
+      net0:
+        ipv4_address: 172.20.0.7
+
+networks:
+  net0:
+    driver : bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+    
